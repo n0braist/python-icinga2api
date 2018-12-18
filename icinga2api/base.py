@@ -151,10 +151,10 @@ class Base(object):
         '''
 
         # TODO: test iter_lines()
-        message = ''
+        message = []
         for char in stream.iter_content():
-            if char == '\n':
-                yield message
-                message = ''
+            if char == b'\n':
+                yield b''.join(message)
+                message = []
             else:
-                message += char
+                message.append(char)
